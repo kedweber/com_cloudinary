@@ -1,0 +1,3 @@
+[submodule "libraries/cloudinary"]
+	path = libraries/cloudinary
+	url = git://github.com/cloudinary/cloudinary_php.git
