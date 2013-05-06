@@ -11,9 +11,9 @@
 defined('KOOWA') or die('Protected Resource');
 
 // Requireing the Cloudinary files
-require_once JPATH_LIBRARIES.'/src/cloudinary/Cloudinary.php';
-require_once JPATH_LIBRARIES.'/src/cloudinary/Uploader.php';
-require_once JPATH_LIBRARIES.'/src/cloudinary/Api.php';
+require_once JPATH_LIBRARIES.'/cloudinary/src/Cloudinary.php';
+require_once JPATH_LIBRARIES.'/cloudinary/src/Uploader.php';
+require_once JPATH_LIBRARIES.'/cloudinary/src/Api.php';
 
 class ComCloudinaryModelCloudinary extends ComDefaultModelDefault
 {
