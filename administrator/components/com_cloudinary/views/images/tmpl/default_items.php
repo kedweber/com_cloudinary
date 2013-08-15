@@ -16,7 +16,7 @@ defined('KOOWA') or die('Protected Resource'); ?>
 	<tr>
 		<td><?= @helper('grid.checkbox', array('row' => $image)) ?></td>
 		<td><?= $i; ?></td>
-		<td><?= $image->path ?></td>
+		<td><a href="<?= @route('view=image&path='.$image->path.'&cloudinary_account_id='.$image->cloudinary_account_id) ?>"><?= $image->path ?></a></td>
 		<td>
 			<a class="modal" href="<?= $image->getUrl() ?>">
 				<?= @text('Preview') ?>
