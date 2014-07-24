@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="1.6">
+    <name>Cloudinary Package</name>
+	<libraryname>cloudinary</libraryname>
+    <author>Jasper van Rijbroek</author>
+    <creationDate>March 2014</creationDate>
+    <packagename>cloudinary</packagename>
+    <version>1.0.0</version>
+    <url>http://www.moyoweb.nl/</url>
+    <packager>Jasper van Rijbroek</packager>
+    <packagerurl>http://www.moyoweb.nl/</packagerurl>
+    <description>Router Package</description>
+    <files folder="packages">
+        <file type="component" id="cloudinary">component</file>
+    </files>
+</extension>
