@@ -1,0 +1,17 @@
+{
+    "name": "moyo/cloudinary",
+    "type": "joomlatools-installer",
+    "description": "Cloudinary",
+    "keywords": ["joomla", "moyo"],
+    "homepage": "https://github.com/moyoweb/cloudinary",
+    "authors": [
+        {
+            "name": "Jasper van Rijbriek",
+            "email": "jasper@moyoweb.nl",
+            "homepage": "http://www.moyoweb.nl"
+        }
+    ],
+    "require": {
+        "joomlatools/installer": "*"
+    }
+}
