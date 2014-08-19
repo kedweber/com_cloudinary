@@ -31,7 +31,7 @@ class ComCloudinaryControllerImage extends ComDefaultControllerDefault
 	 * @param KCommandContext $context
 	 * @return bool|KDatabaseRow
 	 */
-	protected function _actionGet(KCommandContext $context)
+	protected function _actionRead(KCommandContext $context)
     {
 		if(KInflector::isSingular($this->_request->view))
 		{
