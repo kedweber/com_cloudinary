@@ -1,6 +1,3 @@
-SET NAMES utf8;
-SET FOREIGN_KEY_CHECKS = 0;
-
 -- ----------------------------
 --  Table structure for `#__cloudinary_images`
 -- ----------------------------
@@ -15,6 +12,9 @@ CREATE TABLE `#__cloudinary_images` (
   PRIMARY KEY (`cloudinary_image_id`,`path`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- ----------------------------
+--  Table structure for `#__cloudinary_accounts`
+-- ----------------------------
 DROP TABLE IF EXISTS `#__cloudinary_accounts`;
 CREATE TABLE `#__cloudinary_accounts` (
   `cloudinary_account_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -30,5 +30,3 @@ CREATE TABLE `#__cloudinary_accounts` (
   `modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`cloudinary_account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-SET FOREIGN_KEY_CHECKS = 1;

@@ -20,7 +20,7 @@ class ComCloudinaryDatabaseTableAccounts extends KDatabaseTableDefault
 
 		$config->append(array(
 			'behaviors' => array(
-				'defaultable',
+				'com://admin/moyo.database.behavior.defaultable',
 				$sluggable
 			)
 		));

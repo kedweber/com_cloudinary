@@ -2,7 +2,7 @@
     "name": "moyo/cloudinary",
     "type": "joomlatools-installer",
     "description": "Cloudinary",
-    "keywords": ["joomla", "moyo"],
+    "keywords": ["joomla", "moyo", "nooku", "cloudinary"],
     "homepage": "https://github.com/moyoweb/cloudinary",
     "authors": [
         {
@@ -12,6 +12,7 @@
         }
     ],
     "require": {
-        "joomlatools/installer": "*"
+        "joomlatools/installer": "*",
+        "cloudinary/cloudinary_php": "1.0.*"
     }
 }
