@@ -27,7 +27,7 @@ section:
 {
     "name": "moyo/cloudinary",
     "type": "vcs",
-    "url": "https://git.assembla.com/moyo-content.cloudinary.git"
+    "url": "https://github.com/moyoweb/cloudinary.git"
 }
 ```
 
