@@ -1,8 +1,7 @@
 -- ----------------------------
 --  Table structure for `#__cloudinary_images`
 -- ----------------------------
-DROP TABLE IF EXISTS `#__cloudinary_images`;
-CREATE TABLE `#__cloudinary_images` (
+CREATE TABLE IF NOT EXISTS `#__cloudinary_images` (
   `cloudinary_image_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `path` varchar(255) NOT NULL,
   `public_id` varchar(255) NOT NULL DEFAULT '',
@@ -15,8 +14,7 @@ CREATE TABLE `#__cloudinary_images` (
 -- ----------------------------
 --  Table structure for `#__cloudinary_accounts`
 -- ----------------------------
-DROP TABLE IF EXISTS `#__cloudinary_accounts`;
-CREATE TABLE `#__cloudinary_accounts` (
+CREATE TABLE IF NOT EXISTS `#__cloudinary_accounts` (
   `cloudinary_account_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `cloud_name` varchar(255) NOT NULL DEFAULT '',
