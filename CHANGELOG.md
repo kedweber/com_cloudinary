@@ -1,0 +1,1 @@
+# com_cloudinary## CHANGELOG### 1.1.0 - 30 january 2015* Added changelog* Bumped version number to reflect status cloudinary repo### 1.0.3 - 30 december 2014* Fixed install script### 1.0.2 - 10 december 2014* Many code cleanup* Moved defaultable behavior to com_moyo### 1.0.1 - 24 july 2014
