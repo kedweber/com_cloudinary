@@ -136,6 +136,14 @@ class ComCloudinaryModelCloudinary extends ComDefaultModelDefault
 			$data['fetch_format'] = $this->_state->fetch_format;
 		}
 
+		if($this->_state->flags) {
+			if(is_array($this->_state->flags)) {
+				$data['flags'] = implode('.', $this->_state->flags);
+			} else if(is_string($this->_state->flags)) {
+				$data['flags'] = $this->_state->flags;
+			}
+		}
+
 		if($this->_state->cache)
 		{
 			$this->_item->setData(array(

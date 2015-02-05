@@ -42,6 +42,7 @@ class ComCloudinaryModelImages extends ComCloudinaryModelCloudinary
             ->insert('page', 'int')
             ->insert('density', 'int')
             ->insert('fetch_format', 'string', 'auto')
+            ->insert('flags', 'raw', 'progressive')
             ->insert('attribs', 'string')
             ->insert('getsize', 'string', 0)
         ;
