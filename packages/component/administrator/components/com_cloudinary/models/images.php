@@ -10,7 +10,7 @@
 
 defined('KOOWA') or die('Protected Resource');
 
-class ComCloudinaryModelImages extends ComCloudinaryModelCloudinary
+class ComCloudinaryModelImages extends ComDefaultModelDefault
 {
     /**
      * __construct declaration of states.
@@ -27,8 +27,8 @@ class ComCloudinaryModelImages extends ComCloudinaryModelCloudinary
             ->insert('path', 'string', null, true)
             ->insert('gravity', 'word')
             ->insert('crop', 'string', 'fill')
-            ->insert('x', 'int')
-            ->insert('y', 'int')
+            ->insert('x', 'int', 0)
+            ->insert('y', 'int', 0)
             ->insert('cache', 'string')
             ->insert('container', 'string')
             ->insert('radius', 'string')
@@ -43,6 +43,7 @@ class ComCloudinaryModelImages extends ComCloudinaryModelCloudinary
             ->insert('density', 'int')
             ->insert('fetch_format', 'string', 'auto')
             ->insert('flags', 'raw', 'progressive')
+            ->insert('type', 'string')
             ->insert('attribs', 'string')
             ->insert('getsize', 'string', 0)
         ;
@@ -50,13 +51,72 @@ class ComCloudinaryModelImages extends ComCloudinaryModelCloudinary
 
     public function getItem()
     {
-        parent::getItem();
+        if ($this->getState()->container) {
+            $container = $this->getService('com://admin/cloudinary.model.accounts')->slug($this->getState()->container)->getItem();
+        } else {
+            // Select default account
+            $container = $this->getService('com://admin/cloudinary.model.accounts')->default(1)->getItem();
+        }
+
+        Cloudinary::config(array(
+            'cloud_name' => $container->cloud_name,
+            'api_key' => $container->api_key,
+            'api_secret' => $container->api_secret
+        ));
+
+        if (parent::getItem()->isNew()) {
+            if(!$this->_state->type) {
+                $image = \Cloudinary\Uploader::upload(JPATH_FILES . '/' . $this->_state->path);
+            }
+
+            $this->_item = $this->getRow()->setData(array(
+                'public_id' => ($this->_state->type ? $this->_state->path : $image['public_id']),
+                'path' => $this->_state->path,
+                'url' => ($this->_state->type ? '' : $image['url']),
+                'format' => ($this->_state->type ? '' : $image['format']),
+                'cloudinary_account_id' => $container->id
+            ));
+            $this->_item->save();
+        }
+
+        if ($this->_state->flags) {
+            if (is_array($this->_state->flags)) {
+                $this->_state->flags = implode('.', $this->_state->flags);
+            }
+        }
+
+        $file = $this->_state->type ? $this->_item->public_id : $this->_item->public_id . '.' . $this->_item->format;
+        $this->_item->setData(array(
+            'url' => cloudinary_url($file, $this->_state->toArray())
+        ));
+
+        if ($this->_state->cache) {
+            $this->_item->setData(array(
+                'url' => $this->_item->getImage($this->_item->url, $this->_state->toArray())
+            ));
+        }
+
+        if ($this->_state->getsize) {
+            list($width, $height) = getimagesize($this->_item->url);
+            $this->_item->setData(array(
+                'width' => $width,
+                'height' => $height
+            ));
+        }
 
         $this->_item->setData(array(
-            // Set the array to an string
-            'attribs'    => KHelperArray::toString($this->getState()->attribs),
+            'attribs' => KHelperArray::toString($this->_state->attribs),
         ));
 
         return $this->_item;
+    }
+
+    public function getRow(array $options = array())
+    {
+        $identifier         = clone $this->getIdentifier();
+        $identifier->path   = array('database', 'row');
+        $identifier->name   = KInflector::singularize($this->getIdentifier()->name);
+
+        return $this->getService($identifier, $options);
     }
 }
