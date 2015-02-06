@@ -33,7 +33,7 @@ class ComCloudinaryControllerImage extends ComDefaultControllerDefault
 	 */
 	protected function _actionGet(KCommandContext $context)
     {
-		if(KInflector::isSingular($this->_request->view))
+		if(KInflector::isSingular($this->_request->view) && !$this->_request->type)
 		{
 			if(!file_exists(JPATH_FILES . '/' . $this->_request->path) || is_dir(JPATH_FILES . '/' . $this->_request->path)) {
 				return false;
