@@ -97,11 +97,22 @@ class ComCloudinaryModelImages extends ComDefaultModelDefault
         }
 
         if ($this->_state->getsize) {
-            list($width, $height) = getimagesize($this->_item->url);
-            $this->_item->setData(array(
-                'width' => $width,
-                'height' => $height
+            $curl = curl_init($this->_item->url);
+            curl_setopt_array($curl, array(
+                CURLOPT_HTTPHEADER => array(
+                    'Range: bytes=0-32768'
+                ),
+                CURLOPT_RETURNTRANSFER => 1
             ));
+
+            $image = imagecreatefromstring(curl_exec($curl));
+
+            $this->_item->setData(array(
+                'width' => imagesx($image),
+                'height' => imagesy($image)
+            ));
+
+            curl_close($curl);
         }
 
         $this->_item->setData(array(
