@@ -12,33 +12,33 @@ defined('KOOWA') or die('Protected Resource');
 
 class ComCloudinaryControllerImage extends ComDefaultControllerDefault
 {
-	/**
-	 * getRequest make sure the
-	 *
-	 * @return mixed
-	 */
-	public function getRequest()
-	{
-		$this->_request->layout = 'default';
-
-		return parent::getRequest();
-	}
-
-	/**
-	 * _actionGet here we will check if the we access a singular or a plural,
-	 * when plural the action will return true if singular we will check if the requested tile exists.
-	 *
-	 * @param KCommandContext $context
-	 * @return bool|KDatabaseRow
-	 */
-	protected function _actionGet(KCommandContext $context)
+    /**
+     * getRequest make sure the
+     *
+     * @return mixed
+     */
+    public function getRequest()
     {
-		if(KInflector::isSingular($this->_request->view) && !$this->_request->type)
-		{
-			if(!file_exists(JPATH_FILES . '/' . $this->_request->path) || is_dir(JPATH_FILES . '/' . $this->_request->path)) {
-				return false;
-			}
-		}
+        $this->_request->layout = 'default';
+
+        return parent::getRequest();
+    }
+
+    /**
+     * _actionGet here we will check if the we access a singular or a plural,
+     * when plural the action will return true if singular we will check if the requested tile exists.
+     *
+     * @param KCommandContext $context
+     * @return bool|KDatabaseRow
+     */
+    protected function _actionGet(KCommandContext $context)
+    {
+        if(KInflector::isSingular($this->_request->view) && !$this->_request->type)
+        {
+            if(!file_exists(JPATH_FILES . '/' . $this->_request->path) || is_dir(JPATH_FILES . '/' . $this->_request->path)) {
+                return false;
+            }
+        }
 
         return parent::_actionGet($context);
     }

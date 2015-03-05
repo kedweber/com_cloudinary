@@ -12,12 +12,12 @@ defined('KOOWA') or die('Restricted Access');
 
 class ComCloudinaryDispatcher extends ComDefaultDispatcher
 {
-	public function _initialize(KConfig $config)
-	{
-		$config->append(array(
-			'controller' => 'images'
-		));
+    public function _initialize(KConfig $config)
+    {
+        $config->append(array(
+            'controller' => 'images'
+        ));
 
-		parent::_initialize($config);
-	}
+        parent::_initialize($config);
+    }
 }

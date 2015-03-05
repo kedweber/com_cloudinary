@@ -12,10 +12,10 @@ defined('KOOWA') or die('Restricted Access');
 
 class ComCloudinaryModelAccounts extends ComDefaultModelDefault
 {
-	public function __construct(KConfig $config)
-	{
-		parent::__construct($config);
+    public function __construct(KConfig $config)
+    {
+        parent::__construct($config);
 
-		$this->getState()->insert('default', 'int', null, true);
-	}
+        $this->getState()->insert('default', 'int', null, true);
+    }
 }
