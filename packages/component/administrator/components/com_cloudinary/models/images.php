@@ -64,6 +64,9 @@ class ComCloudinaryModelImages extends ComDefaultModelDefault
             'api_secret' => $container->api_secret
         ));
 
+        // Force the path to a string so object with __toString() function will work
+        $this->set('path', (string)$this->getState()->path);
+
         if (parent::getItem()->isNew()) {
             if(!$this->_state->type) {
                 $image = \Cloudinary\Uploader::upload(JPATH_FILES . '/' . $this->_state->path);
