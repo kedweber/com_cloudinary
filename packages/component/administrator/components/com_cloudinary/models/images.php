@@ -51,8 +51,10 @@ class ComCloudinaryModelImages extends ComDefaultModelDefault
 
     public function getItem()
     {
-        if ($this->getState()->container) {
-            $container = $this->getService('com://admin/cloudinary.model.accounts')->slug($this->getState()->container)->getItem();
+        $state = $this->getState();
+
+        if ($state->container) {
+            $container = $this->getService('com://admin/cloudinary.model.accounts')->slug($state->container)->getItem();
         } else {
             // Select default account
             $container = $this->getService('com://admin/cloudinary.model.accounts')->default(1)->getItem();
@@ -64,39 +66,42 @@ class ComCloudinaryModelImages extends ComDefaultModelDefault
             'api_secret' => $container->api_secret
         ));
 
+        // Force the path to a string so object with __toString() function will work
+        $this->set('path', (string)$state->path);
+
         if (parent::getItem()->isNew()) {
-            if(!$this->_state->type) {
-                $image = \Cloudinary\Uploader::upload(JPATH_FILES . '/' . $this->_state->path);
+            if(!$state->type) {
+                $image = \Cloudinary\Uploader::upload(JPATH_FILES . '/' . $state->path);
             }
 
             $this->_item = $this->getRow()->setData(array(
-                'public_id' => ($this->_state->type ? $this->_state->path : $image['public_id']),
-                'path' => $this->_state->path,
-                'url' => ($this->_state->type ? '' : $image['url']),
-                'format' => ($this->_state->type ? '' : $image['format']),
+                'public_id' => ($state->type ? $state->path : $image['public_id']),
+                'path' => $state->path,
+                'url' => ($state->type ? '' : $image['url']),
+                'format' => ($state->type ? '' : $image['format']),
                 'cloudinary_account_id' => $container->id
             ));
             $this->_item->save();
         }
 
-        if ($this->_state->flags) {
-            if (is_array($this->_state->flags)) {
-                $this->_state->flags = implode('.', $this->_state->flags);
+        if ($state->flags) {
+            if (is_array($state->flags)) {
+                $state->flags = implode('.', $state->flags);
             }
         }
 
-        $file = $this->_state->type ? $this->_item->public_id : $this->_item->public_id . '.' . $this->_item->format;
+        $file = $state->type ? $this->_item->public_id : $this->_item->public_id . '.' . $this->_item->format;
         $this->_item->setData(array(
-            'url' => cloudinary_url($file, $this->_state->toArray())
+            'url' => cloudinary_url($file, $state->toArray())
         ));
 
-        if ($this->_state->cache) {
+        if ($state->cache) {
             $this->_item->setData(array(
-                'url' => $this->_item->getImage($this->_item->url, $this->_state->toArray())
+                'url' => $this->_item->getImage($this->_item->url, $state->toArray())
             ));
         }
 
-        if ($this->_state->getsize) {
+        if ($state->getsize) {
             $curl = curl_init($this->_item->url);
             curl_setopt_array($curl, array(
                 CURLOPT_HTTPHEADER => array(
@@ -116,7 +121,7 @@ class ComCloudinaryModelImages extends ComDefaultModelDefault
         }
 
         $this->_item->setData(array(
-            'attribs' => KHelperArray::toString($this->_state->attribs),
+            'attribs' => KHelperArray::toString($state->attribs),
         ));
 
         return $this->_item;
