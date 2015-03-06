@@ -7,7 +7,7 @@
 	<license>http://www.gnu.org/licenses/gpl.html GNU/GPL v3</license>
 	<authorEmail>jasper@moyoweb.nl</authorEmail>
 	<authorUrl>www.moyoweb.nl</authorUrl>
-	<version>1.1.1</version>
+	<version>1.1.2</version>
 	<description>Cloudinary Images API</description>
 
 	<install>
