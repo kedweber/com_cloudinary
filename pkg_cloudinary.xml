@@ -5,11 +5,11 @@
     <author>Moyo Web Architects</author>
     <creationDate>March 2014</creationDate>
     <packagename>cloudinary</packagename>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
     <url>http://www.moyoweb.nl/</url>
     <packager>Jasper van Rijbroek</packager>
     <packagerurl>http://www.moyoweb.nl/</packagerurl>
-    <description>Provides a Frontend in Joomla to the cloudinary service.</description>
+    <description>Provides a Frontend in Joomla to the Cloudinary service.</description>
     <files folder="packages">
         <file type="component" id="cloudinary">component</file>
     </files>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0.0" method="upgrade" overwrite="true">
 	<name>Cloudinary</name>
-	<author>Joachim van de Haterd</author>
+	<author>Moyo Web Architects</author>
 	<creationDate>March 2014</creationDate>
 	<copyright>Copyright (C) 2014 Moyo Web Architects and Contributors. (http://www.moyoweb.nl)</copyright>
 	<license>http://www.gnu.org/licenses/gpl.html GNU/GPL v3</license>
-	<authorEmail>jasper@moyoweb.nl</authorEmail>
+	<authorEmail>info@moyoweb.nl</authorEmail>
 	<authorUrl>www.moyoweb.nl</authorUrl>
-	<version>1.1.2</version>
+	<version>1.1.3</version>
 	<description>Cloudinary Images API</description>
 
 	<install>
@@ -18,6 +18,8 @@
 
 	<administration>
 		<files folder="administrator/components/com_cloudinary">
+			<file>access.xml</file>
+			<file>config.xml</file>
 			<file>dispatcher.php</file>
 			<file>cloudinary.php</file>
 
