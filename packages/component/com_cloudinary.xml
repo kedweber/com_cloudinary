@@ -18,6 +18,8 @@
 
 	<administration>
 		<files folder="administrator/components/com_cloudinary">
+			<file>access.xml</file>
+			<file>config.xml</file>
 			<file>dispatcher.php</file>
 			<file>cloudinary.php</file>
 
