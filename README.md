@@ -23,18 +23,30 @@ or
 Installation is done through composer. In your `composer.json` file, you should add the following lines to the repositories
 section:
 
+from this local repository;
+
 ```json
 {
-    "name": "moyo/cloudinary",
+    "name": "moyo/com_cloudinary",
     "type": "vcs",
-    "url": "https://github.com/moyoweb/cloudinary.git"
+    "url": "https://github.com/moyoweb/com_cloudinary.git"
+}
+```
+
+or from the company that funded this development;
+
+```json
+{
+    "name": "moyo/com_cloudinary",
+    "type": "vcs",
+    "url": "https://github.com/moyoweb/com_cloudinary.git"
 }
 ```
 
 The require section should contain the following line:
 
 ```json
-    "moyo/cloudinary": "1.0.*",
+    "moyo/com_cloudinary": "1.0.*",
 ```
 
 Afterward, just run `composer update` from the root of your Joomla project.
