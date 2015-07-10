@@ -29,7 +29,7 @@ from this local repository;
 {
     "name": "moyo/com_cloudinary",
     "type": "vcs",
-    "url": "https://github.com/moyoweb/com_cloudinary.git"
+    "url": "https://github.com/kedweber/com_cloudinary.git"
 }
 ```
 
